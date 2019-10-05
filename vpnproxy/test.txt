@@ -1,0 +1,4 @@
+HTTP/1.0 200 OK
+Server: Netcat
+Content-type: text/html
+

@@ -1,0 +1,7 @@
+function FindProxyForURL(url, host)
+{ /*
+ if (isPlainHostName(host) || dnsDomainIs(host, ".mydomain.com"))
+  return "DIRECT";
+ else */
+  return "PROXY localhost:8080; ";
+}

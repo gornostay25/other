@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      var labelIndex = 0;
+      function radius1(location,rad){
+      var circle = new google.maps.Circle({
+            center: location,
+            map: mapp,
+            radius: rad,          // IN METERS.
+            fillColor: '#0000FF',
+            fillOpacity: 0.3,
+            strokeColor: "#0000FF",
+            strokeWeight: 0         // DON'T SHOW CIRCLE BORDER.
+        });
+      };
+      function radius2(location,rad){
+      var circle = new google.maps.Circle({
+            center: location,
+            map: mapp,
+            radius: rad,          // IN METERS.
+            fillColor: '#FFFF00',
+            fillOpacity: 0.3,
+            strokeColor: "#FFFF00",
+            strokeWeight: 0         // DON'T SHOW CIRCLE BORDER.
+        });
+      };
+      function addMarker(location,rad) {
+        var marker = new google.maps.Marker({
+          position: location,
+          label: labels[labelIndex++ % labels.length],
+          map: mapp
+        });
+        
+        var circle = new google.maps.Circle({
+            center: location,
+            map: mapp,
+            radius: rad,          // IN METERS.
+            fillColor: '#E0FFFF',
+            fillOpacity: 0.3,
+            strokeColor: "#0000FF",
+            strokeWeight: 0         // DON'T SHOW CIRCLE BORDER.
+        });
+        
+        
+        mapp.setCenter(location);
+          
+ 
+     /*circle.bindTo('center', marker, 'position');
+    markers.push(marker); */
+    
+};
+      
+      var mapp;
+      function initMap() {
+        mapp = new google.maps.Map(document.getElementById('map'), {
+         center:  { lat: 49.837729, lng: 23.976921},/* */
+          mapTypeId: 'hybrid',
+          zoom: 13
+        });
+        
+addMarker({lat: 42.454127,lng: 18.533995},6509);
+        };
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8xp5ikg1nH96q9BHUmg1EAZwNIyxO-5A&callback=initMap"
+    async defer></script>
+  </body>
+</html>
