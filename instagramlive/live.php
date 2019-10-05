@@ -4,7 +4,7 @@ date_default_timezone_set('UTC');
 require __DIR__.'/vendor/autoload.php';
 $ig = new \InstagramAPI\Instagram();
 try {
-    $ig->login('gornostay25', '123456789qazx');
+    $ig->login('gornostay25', '');
 } catch (\Exception $e) {
     echo 'Something went wrong: '.$e->getMessage()."\n";
     exit(0);
